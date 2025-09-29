@@ -7,14 +7,37 @@
   <link rel="icon" href="./Images/Logo.png" />
 
   <!-- SEO -->
-  <meta name="description" content="EXTEM Education bridges academics and real-world success through life education: confidence, communication, financial habits, wellness, first aid, and more." />
-  <meta name="keywords" content="Life Education, Student Success, Public Speaking, Find Your Voice, Math Trix, Financial Compass, B.A.S.E, AI Mastery, Exam Stress, Guidance Wing" />
+  <meta name="description" content="EXTEM Education bridges academics and real-world success through life education: confidence, communication, financial habits, wellness, first aid, and more. Choose ours for a practical, life-ready approach." />
+  <meta name="keywords" content="Life Education, Student Success, Public Speaking, Find Your Voice, Math Trix, Financial Compass, B.A.S.E, AI Mastery, Exam Stress, Guidance Wing, our motto, our courses, our community, ours" />
   <meta name="author" content="EXTEM Education" />
   <meta property="og:title" content="EXTEM Education — Life Education for Real-World Success" />
-  <meta property="og:description" content="Premium, practice-first programs in small batches. Confidence, communication, math speed, financial literacy, wellness & first aid." />
+  <meta property="og:description" content="Premium, practice-first programs in small batches. Confidence, communication, math speed, financial literacy, wellness & first aid. Discover why ours works." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="./Images/LOGO.png" />
   <meta name="theme-color" content="#015C8B" />
+
+  <!-- Optional: FAQ Schema to boost 'ours' SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [{
+      "@type": "Question",
+      "name": "Why choose ours over traditional education alone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because ours blends formal academics with life education—confidence, communication, finance, wellness—so students succeed in school and in life."
+      }
+    },{
+      "@type": "Question",
+      "name": "What makes our life education different?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ours is practice-first, small-batch, and mentored. Students build real habits: speaking, teamwork, money sense, and wellbeing."
+      }
+    }]
+  }
+  </script>
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -43,15 +66,24 @@
     .card{background:var(--card);border:1px solid rgba(12,42,64,.06);border-radius:var(--radius);box-shadow:0 10px 30px rgba(1,92,139,.06)}
     .shadow-soft{box-shadow:0 10px 30px rgba(11,15,20,.06)}
 
+    /* NAVBAR */
     .nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.78);backdrop-filter:saturate(160%) blur(10px);border-bottom:1px solid rgba(11,15,20,.06)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.8rem 0}
-    .brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink)}
-    .brand img{height:46px;width:auto;object-fit:contain}
-    .nav-links{display:flex;gap:1rem}
-    .nav-links a{color:var(--ink);text-decoration:none;font-weight:600;padding:.55rem .8rem;border-radius:12px}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:.5rem 0;min-height:64px}
+    .brand{display:flex;align-items:center;gap:.65rem;text-decoration:none;color:var(--ink);line-height:1}
+    .brand img{
+      display:block;
+      height:46px;
+      width:auto;
+      object-fit:contain;
+      vertical-align:middle;
+      transform:translateY(0); /* ensure no baseline shift */
+    }
+    .nav-links{display:flex;gap:1rem;align-items:center}
+    .nav-links a{color:var(--ink);text-decoration:none;font-weight:600;padding:.55rem .8rem;border-radius:12px;line-height:1}
     .nav-links a:hover{background:#f0f6fb}
-    .hamburger{display:none;background:transparent;border:0;font-size:1.4rem}
+    .hamburger{display:none;background:transparent;border:0;font-size:1.4rem;line-height:1}
 
+    /* HERO */
     .hero{position:relative;min-height:86vh;display:grid;place-items:center;background:
       radial-gradient(1200px 600px at 10% 10%, rgba(9,155,235,.07), transparent 60%),
       radial-gradient(1200px 600px at 90% 20%, rgba(1,92,139,.07), transparent 60%),
@@ -64,6 +96,7 @@
     .cta{display:flex;gap:.8rem;flex-wrap:wrap}
     .lottie-wrap{display:flex;align-items:center;justify-content:center}
 
+    /* Topics row */
     .brands{height:200px;background:#fff;border-top:1px solid rgba(11,15,20,.06);border-bottom:1px solid rgba(11,15,20,.06);display:grid;place-items:center}
     .marquee{display:flex;gap:3rem;align-items:center;animation:scroll 28s linear infinite;justify-content:center; text-align:center;}
     @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -89,16 +122,108 @@
 
     .field{width:100%;padding:.9rem 1rem;border-radius:14px;border:1px solid rgba(11,15,20,.12);background:#fff;transition:.2s;border-color:rgba(11,15,20,.12)}
     .field:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 4px var(--ring)}
-    label{display:block;font-weight:600;margin:.6rem 0 .35rem}
+
+    /* WhatsApp Floating Button */
+    .whatsapp-fab{
+      position:fixed;
+      right:18px;
+      bottom:18px;
+      z-index:60;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:56px;height:56px;
+      border-radius:50%;
+      background:#25D366;
+      color:#fff;
+      text-decoration:none;
+      box-shadow:0 12px 24px rgba(0,0,0,.18);
+      transition:opacity .25s, transform .25s, box-shadow .25s;
+      opacity:0; transform:translateY(10px); pointer-events:none;
+      line-height:0; /* perfect centering by removing inline line-box */
+    }
+    .whatsapp-fab:focus{outline:3px solid rgba(37,211,102,.35)}
+    .whatsapp-fab svg{
+      width:28px;height:28px;display:block;margin:0;
+      transform: translateY(0.5px); /* tiny nudge to visually center the glyph */
+    }
+    .whatsapp-fab.visible{opacity:1; transform:translateY(0); pointer-events:auto}
+    .whatsapp-fab:hover{box-shadow:0 14px 28px rgba(0,0,0,.22)}
 
     @media (max-width:980px){
       .hero-grid,.split,.grid-2{grid-template-columns:1fr}
       .nav-links{display:none}
       .hamburger{display:block}
+      .brand img{height:40px}
     }
     @media (max-width:760px){
       .grid-3{grid-template-columns:1fr}
       .brands{height:160px}
+    }
+
+    /* ------------------------------
+       INSERTED COMPARISON SECTION
+       (prefixed classes to avoid conflicts)
+       ------------------------------ */
+    .cmp-wrap{padding:clamp(48px,6vh,80px) 0}
+    .cmp-eyebrow{
+      display:inline-block;background:#e8f5ff;color:var(--brand);
+      padding:.35rem .7rem;border-radius:999px;font-weight:700;border:1px solid rgba(1,92,139,.18)
+    }
+    .cmp-title{margin:.7rem 0 0;font-size:clamp(1.8rem,4vw,2.4rem);line-height:1.15;text-align:center}
+    .cmp-sub{color:var(--muted);margin:.6rem auto 0;max-width:900px;text-align:center}
+
+    .cmp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.2rem;align-items:start;margin-top:24px}
+    .cmp-card{
+      position:relative;background:var(--card);
+      border:1px solid rgba(12,42,64,.06);border-radius:var(--radius);
+      padding:clamp(18px,2.2vw,22px);box-shadow:0 10px 30px rgba(1,92,139,.06);
+      overflow:visible;min-height:380px
+    }
+    .cmp-pop{
+      display:block;margin:0 auto;
+      height:clamp(220px, 28vw, 340px); /* equal visual height */
+      width:auto;max-width:100%;
+      filter: drop-shadow(0 12px 20px rgba(0,0,0,.15));
+    }
+    .cmp-content{margin-top:1rem}
+    .cmp-label{
+      font-weight:800;letter-spacing:.3px;display:inline-flex;align-items:center;gap:.45rem;
+      padding:.35rem .7rem;border-radius:999px;border:1px solid rgba(11,15,20,.08);background:#fff
+    }
+    .cmp-label.bad{color:#b60f0f;border-color:rgba(182,15,15,.18);background:#fff5f5}
+    .cmp-label.good{color:#0b7d35;border-color:rgba(11,125,53,.18);background:#f3fff8}
+    .cmp-card h3{font-size:1.2rem;margin:.6rem 0 .4rem}
+    .cmp-card p{color:var(--muted);margin:.15rem 0 .8rem}
+    .cmp-list{padding-left:0;margin:.2rem 0;list-style:none}
+    .cmp-list li{display:flex;gap:.6rem;align-items:flex-start;margin:.45rem 0}
+    .cmp-icon{width:24px;height:24px;display:grid;place-items:center;line-height:1;border-radius:999px;font-weight:900;flex-shrink:0}
+    .cmp-icon.bad{background:#ffecec;color:#b60f0f}
+    .cmp-icon.good{background:#e8fff1;color:#0b7d35}
+
+    .cmp-equation{
+      margin: clamp(28px,4vw,40px) auto 0;display:flex;align-items:center;justify-content:center;gap:.7rem;
+      padding:1rem;border-radius:999px;background:#fff;border:1px dashed rgba(1,92,139,.25);
+      box-shadow:0 8px 24px rgba(1,92,139,.06);font-weight:800;flex-wrap:wrap;text-align:center;width:fit-content
+    }
+    .cmp-chip{padding:.4rem .8rem;border-radius:999px;font-weight:800;white-space:nowrap}
+    .cmp-chip.a{background:#e8f5ff;color:var(--brand);border:1px solid rgba(1,92,139,.2)}
+    .cmp-chip.b{background:#e9fff8;color:#0b7d35;border:1px solid rgba(11,125,53,.2)}
+    .cmp-chip.c{background:#fff0e6;color:#b25a00;border:1px solid rgba(178,90,0,.2)}
+
+    .cmp-motto{
+      max-width:900px;margin:18px auto 0;padding:1rem 1.1rem;background:#fff;
+      border:1px solid rgba(12,42,64,.06);border-left:4px solid var(--brand);
+      border-radius:16px;font-size:1.05rem;line-height:1.6;text-align:center
+    }
+    .cmp-motto em{font-style:normal;color:var(--brand-2);font-weight:700}
+
+    /* Mobile layout for comparison section */
+    @media (max-width:880px){
+      .cmp-grid{grid-template-columns:1fr}
+      .cmp-card{min-height:unset;text-align:center}
+      .cmp-pop{height:clamp(220px, 40vw, 340px)}
+      .cmp-equation{flex-direction:column;gap:.4rem;padding:1.2rem 1rem;border-radius:16px}
     }
   </style>
 </head>
@@ -108,12 +233,13 @@
   <!-- NAVBAR -->
   <nav class="nav" aria-label="Primary">
     <div class="container nav-inner">
-      <a class="brand" href="#top" style="line-height:0;display:inline-block">
-        <img src="./Images/extem-logo-full.png" alt="Extem Education" style="display:block;height:46px;width:auto" />
+      <a class="brand" href="#top" aria-label="EXTEM Education — Home">
+        <img src="./Images/extem-logo-full.png" alt="Extem Education" />
       </a>
       <button class="hamburger" aria-label="Open menu" onclick="toggleMenu()">☰</button>
       <div id="menu" class="nav-links">
         <a href="#about">About</a>
+        <a href="#compare">Why Ours</a>
         <a href="#courses">Courses</a>
         <a href="#guidance">Guidance Wing</a>
         <a href="#testimonials">Testimonials</a>
@@ -122,7 +248,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO (Section 1) -->
   <header id="top" class="hero">
     <div class="container hero-grid">
       <div data-aos="fade-up">
@@ -140,7 +266,7 @@
     </div>
   </header>
 
-  <!-- TEXT-ONLY CAROUSEL (bold, centered) -->
+  <!-- TEXT-ONLY CAROUSEL (Section 2) -->
   <div class="brands" aria-label="Life Education Topics">
     <div class="container" style="overflow:hidden">
       <div class="marquee">
@@ -159,7 +285,7 @@
   </div>
 
   <main id="main">
-    <!-- ABOUT LIFE EDUCATION -->
+    <!-- ABOUT LIFE EDUCATION (Section 3) -->
     <section id="about" class="container">
       <div class="split">
         <div class="lottie-wrap" data-aos="fade-right" style="min-height:360px;display:flex;align-items:center;justify-content:center">
@@ -187,6 +313,65 @@
         </div>
       </div>
     </section>
+
+    <!-- INSERTED: FORMAL vs LIFE EDUCATION (After About, Before Courses) -->
+    <section id="compare" class="cmp-wrap">
+      <div class="container" data-aos="fade-up" aria-label="Why ours works: Formal Education vs Life Education comparison">
+        <span class="cmp-eyebrow">Our Motto in Action</span>
+        <h2 class="cmp-title">Why <span style="color:var(--brand)">ours</span> works — Formal Education <span style="color:var(--brand)">vs</span> Life Education</h2>
+        <p class="cmp-sub">Same professionals, two paths: one with academics alone, another with academics <em>plus</em> life education—confidence, relationships, wellness, finance, and teamwork. This is why ours delivers real-world results.</p>
+
+        <div class="cmp-grid" style="margin-top:18px">
+          <!-- LEFT: Formal only -->
+          <article class="cmp-card">
+            <img class="cmp-pop" src="./Images/sad.png" loading="lazy" decoding="async" alt="Our comparison: group of stressed professionals (formal education only)" />
+            <div class="cmp-content">
+              <span class="cmp-label bad">Formal Education — Only</span>
+              <h3>Professionals, but with real-life gaps</h3>
+              <p>Career progress is possible, yet many lack everyday readiness.</p>
+              <ul class="cmp-list">
+                <li><span class="cmp-icon bad">×</span> Struggles in relationships &amp; family life</li>
+                <li><span class="cmp-icon bad">×</span> Weak financial habits &amp; planning</li>
+                <li><span class="cmp-icon bad">×</span> Low confidence &amp; stage fear</li>
+                <li><span class="cmp-icon bad">×</span> Limited teamwork &amp; collaboration</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- RIGHT: Formal + Life Education -->
+          <article class="cmp-card">
+            <img class="cmp-pop" src="./Images/happpy.png" loading="lazy" decoding="async" alt="Our comparison: group of confident professionals (formal plus life education)" />
+            <div class="cmp-content">
+              <span class="cmp-label good">Formal + Life Education</span>
+              <h3>Career &amp; character — together</h3>
+              <p>Balanced growth leads to success in exams and everyday life.</p>
+              <ul class="cmp-list">
+                <li><span class="cmp-icon good">✓</span> Strong relationships &amp; family life</li>
+                <li><span class="cmp-icon good">✓</span> Healthy money habits &amp; literacy</li>
+                <li><span class="cmp-icon good">✓</span> Confidence, presence &amp; communication</li>
+                <li><span class="cmp-icon good">✓</span> Teamwork, leadership &amp; resilience</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div style="display:flex;flex-direction:column;align-items:center;margin-top:10px">
+          <div class="cmp-equation" aria-label="Our formula: Formal Education plus Life Education equals True Success">
+            <span class="cmp-chip a">Formal Education</span>
+            <span aria-hidden="true">+</span>
+            <span class="cmp-chip b">Life Education</span>
+            <span aria-hidden="true">=</span>
+            <span class="cmp-chip c">Quality Education</span>
+          </div>
+
+          <blockquote class="cmp-motto">
+            “We believe that while formal education creates professionals, it is life education that transforms them into
+            <em>quality human beings</em> and <em>leaders of tomorrow</em>.”
+          </blockquote>
+        </div>
+      </div>
+    </section>
+    <!-- END INSERTED -->
 
     <!-- COURSES -->
     <section id="courses" class="container">
@@ -250,7 +435,7 @@
             <li>Confidence journal + final showcase</li>
           </ol>
           <div class="cta" style="margin-top:.6rem">
-            <a class="btn btn-primary" href="#contact">Invite us to your school</a>
+            <a class="btn btn-primary" href="#contact">Connect With Us</a>
           </div>
         </div>
       </div>
@@ -335,6 +520,13 @@
     <div style="text-align:center;padding:.9rem;border-top:1px solid rgba(255,255,255,.1);color:#9ec5de">© <span id="year"></span> EXTEM Education. All rights reserved.</div>
   </footer>
 
+  <!-- WhatsApp Floating Button: visible from Section 2 onward (hidden only on Hero) -->
+  <a id="wa-fab" class="whatsapp-fab" href="https://wa.me/+919037264404" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M19.11 17.18c-.29-.15-1.69-.83-1.95-.93-.26-.1-.45-.15-.64.15-.19.29-.74.93-.9 1.12-.17.19-.33.22-.62.07-.29-.15-1.21-.45-2.3-1.43-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.33.43-.5.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.55-.47-.48-.64-.48-.17 0-.36-.02-.55-.02-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .15.19 2 3.06 4.84 4.29.68.29 1.21.47 1.62.6.68.22 1.3.19 1.79.12.55-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.34zM16.02 3.2c-7.08 0-12.82 5.73-12.82 12.8 0 2.25.59 4.43 1.72 6.36L3 29l6.84-1.79a12.76 12.76 0 0 0 6.18 1.61h.01c7.07 0 12.8-5.73 12.8-12.8 0-3.42-1.33-6.64-3.75-9.06a12.76 12.76 0 0 0-9.06-3.75zm0 23.25h-.01a10.4 10.4 0 0 1-5.29-1.45l-.38-.23-4.06 1.06 1.09-3.95-.25-.4a10.4 10.4 0 0 1-1.61-5.6c0-5.75 4.68-10.43 10.44-10.43 2.79 0 5.41 1.09 7.38 3.06a10.4 10.4 0 0 1 3.06 7.37c0 5.75-4.68 10.43-10.43 10.43z" fill="currentColor"/>
+    </svg>
+  </a>
+
   <!-- Minimal form styles & focus (kept) -->
   <style>
     .field{width:100%;padding:.9rem 1rem;border-radius:14px;border:1px solid rgba(11,15,20,.12);background:#fff;transition:.2s;border-color:rgba(11,15,20,.12)}
@@ -365,7 +557,6 @@
       e.preventDefault();
       const form = e.target;
 
-      // basic validation
       for (const n of ['name','email','mobile','interest']){
         if(!form.elements[n] || !form.elements[n].value.trim()){
           alert('Please fill all required fields.');
@@ -373,7 +564,6 @@
         }
       }
 
-      // Build URL-encoded body from the form (this is what Apps Script parses best)
       const body = new URLSearchParams(new FormData(form));
 
       try {
@@ -382,7 +572,6 @@
           headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
           body
         });
-        // UI feedback
         document.getElementById('form-status').style.display = 'block';
         form.reset();
       } catch (err) {
@@ -390,6 +579,28 @@
         alert('Sorry, something went wrong. Please try again.');
       }
     });
+  </script>
+
+  <!-- Show WhatsApp FAB from Section 2 onward (hide only while Hero is visible) -->
+  <script>
+    (function(){
+      const fab = document.getElementById('wa-fab');
+      const hero = document.querySelector('.hero');
+      if(!fab || !hero) return;
+
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          // If hero is mostly visible, hide FAB; otherwise show (from second section to last).
+          if(entry.isIntersecting && entry.intersectionRatio > 0.25){
+            fab.classList.remove('visible');
+          } else {
+            fab.classList.add('visible');
+          }
+        });
+      }, { root:null, threshold:[0,0.25,0.5,0.75,1] });
+
+      io.observe(hero);
+    })();
   </script>
 </body>
 </html>
